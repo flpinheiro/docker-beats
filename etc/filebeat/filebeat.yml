@@ -1,0 +1,20 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /var/log/system.log
+    - /var/log/wifi.log
+# filebeat.autodiscover:
+#   providers:
+#     - type: container
+#       templates:
+#         - condition:
+#             not:
+#               contains:
+#                 docker.container.image: filebeat
+#           config:
+#             - type: docker
+#               containers.ids:
+#                 - "${data.docker.container.id}"
+logging.metrics.enabled: false
+output.logstash:
+  hosts: ["0.0.0.0:5044"]
