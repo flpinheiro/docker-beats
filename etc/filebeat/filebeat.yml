@@ -163,7 +163,7 @@ output.logstash:
   # production -> compuletra
   hosts: ["10.0.18.30:5044"]
   # test -> localhost 
-  # hosts: ["localhost:5044"] 
+  # hosts: ["0.0.0.0:5044"] 
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
@@ -174,6 +174,7 @@ output.logstash:
 
   # Client Certificate Key
   #ssl.key: "/etc/pki/client/cert.key"
+  index: "asp.net-serilog-1.0.0"
 
 #----------------------------- File output --------------------------------
 
@@ -212,10 +213,10 @@ processors:
   - add_docker_metadata: ~
   - add_kubernetes_metadata: ~
   # - add_fields:
-  #   target: Application_data
-  #   fields:
-  #     name: myproject
-  #     id: '574734885120952459'
+  #     target: metadata
+  #     fields:
+  #       index_target: "asp.net-serilog"
+        # id: '574734885120952459'
 
 #================================ Logging =====================================
 
